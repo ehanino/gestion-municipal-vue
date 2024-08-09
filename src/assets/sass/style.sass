@@ -1,0 +1,213 @@
+@import "_variables.sass"
+@import "_mixin.sass"
+@import '_tools.sass'
+
+// @import "_eha-controls.sass"
+
+* 
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+
+body
+    
+    height: 100vh
+    @include phone
+        min-width: 320px
+.body
+    background: url('../fondo_login.png')
+legend
+    display: none
+.vertical-auto
+    overflow-y: auto
+.login-container
+    width: 480px
+    height: 80%
+    // background-color: beige
+    @include phone
+        min-width: 320px
+
+    @include tablet
+        // background-color: blue
+    @include laptop
+        // background-color: red
+    @include desktop
+        // background-color: yellow
+    @include large-desktop
+        // background-color: white
+
+.flex
+    display: flex
+    flex-direction: row
+
+.flex-bi
+    display: flex
+    flex-direction: row
+    column-gap: 3px
+    @include phone
+        flex-direction: column
+.manito
+    z-index: 999
+.manito:hover
+    cursor: pointer
+
+.icon30x30
+    width: 20px
+    height: 20px
+    &:hover
+        transform: scale(1.1)
+.escondeM
+    display: none
+.disabled
+    pointer-events: none
+    text-decoration: none
+    color: grey
+// ********************************************************
+// *******************************************************
+.form
+    // border: 1px solid red
+    min-width: 300px
+    margin: auto auto
+    margin-top: 5px
+    // padding: 2rem 2rem
+    padding-top: 15px !important
+    padding-right: 5px !important    
+    border-radius: 1rem
+    background-color: #fff
+
+.form__title
+    color: #20b4d9
+    font-weight: 400
+    margin-bottom: 1rem
+.form__div
+    // background-color: yellow
+    width: 100% !important
+    position: relative
+    display: inline-block
+    // height: 25px
+    // margin-bottom: 1rem
+.form__input
+    margin-top: 50px
+    padding-left: 18px
+    padding-right: 5px
+    margin-right: 2px
+    width: 100% !important
+    margin-top: 0px
+    height: 25px
+    border-radius: 0.5rem
+    border: 1px solid #eff0f3
+    outline: none
+    box-sizing: border-box
+    transform: 0.3s
+    color: #1A5276
+    font-family: monospace
+    font-weight: 400
+    font-size: 1rem
+    
+.form__input:focus, .form__input:hover
+    border-color: #c9c8c8
+    box-shadow: 0 0 6px 0 #c9c8c8
+.form__div .form__button
+    position: absolute
+    top: 0px
+    right: 0px
+    width: 25px
+    height: 25px
+    cursor: pointer
+    &:hover
+        transform: scale(1.1)
+.form__label
+    position: absolute  
+    left: 1rem
+    top: 0.2rem
+    padding: 0 0.25rem
+    background-color: #fff
+    color: #80868B
+    font-size: 0.8em !important
+    transition: 0.3
+.form__input:focus + .form__label 
+    top: -0.7rem
+    left: 0.8rem
+    color: #a7a7a7
+    font-family: futura
+    font-size: 0.75rem !important
+    font-weight: 300
+.form__input:not(:placeholder-shown).form__input:not(:focus) + .form__label
+    top: -0.75rem
+    left: 0.8rem
+    color: #a7a7a7
+    font-family: futura
+    font-size: 0.8em !important
+    font-weight: 400
+
+.n-card-header
+    margin-bottom: 0 !important
+    background-color: rgba(0, 0, 0, 0.03)
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125)
+    color: rgb(6, 6, 88)
+.n-card-body        
+    -webkit-box-flex: 1
+    -ms-flex: 1 1 auto
+    flex: 1 1 auto
+.n-font-table-title    
+    font-size: .85rem
+    font-family: monospace
+    font-weight: 400
+    color: #838282
+.n-font-table-parr
+    font-size: .75rem
+    font-family: monospace
+    font-weight: 350
+
+.card-header-font
+    color: #063dd9
+    font-family: futura
+    font-weight: 500
+    font-size: 1rem
+    text-transform: uppercase
+.card-header-font--sub
+    color: #7896e9
+    font-family: futura
+    font-weight: 500
+    font-size: 1rem
+    text-transform: capitalize
+.selected
+    background-color: #F2F2F2
+    color: #06101C !important
+.align-right
+    text-align: right
+.input-normal
+    width: 165px !important
+    border: 1.5px solid #eff0f3
+    outline: none
+    border-radius: .5rem
+    box-sizing: border-box
+    height: 25px
+    padding-right: .5em
+    text-align: right
+.label-normal
+    padding-top: .2em
+.justify-content-space
+    justify-content: space-between
+.without-padding
+    padding: 0 0 0 0 !important
+
+.gab-1
+    gap: 5px
+.gab-2
+    gap: 10px
+.gab-3
+    gap: 15px
+.gab-4
+    gap: 20px
+
+.btn-reniec
+    width: 40px !important
+    height: 25px !important
+// ***************** Font Size **************************************
+.font-medium
+    font-size: $medium-font-size
+.font-small
+    font-size: $small-font-size
+.font-xxs
+    font-size: $xxs-font-size

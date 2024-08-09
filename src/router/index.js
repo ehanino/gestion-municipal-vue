@@ -1,25 +1,47 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import LoginView from '../views/LoginView.vue';
+import DashboardView from '../views/DashBoardView.vue';
+import { useAuthStore } from '../store/authStore';
 
+// Definición de rutas
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+    {
+        path: '/',
+        name: 'Login',
+        component: LoginView
+    },
+    {
+        path: '/dashboard',
+        name: 'Dashboard',
+        component: DashboardView,
+        meta: { requiresAuth: true } // Indica que esta ruta requiere autenticación
+    }
+];
 
+// Creación del enrutador
 const router = createRouter({
-  history: createWebHashHistory(),
-  routes
-})
+    history: createWebHistory(),
+    routes
+});
 
-export default router
+// Middleware de navegación para verificar la autenticación
+router.beforeEach((to, from, next) => {
+    const authStore = useAuthStore(); // Obtiene la tienda de autenticación
+
+    // Verifica si la ruta requiere autenticación
+    if (to.meta.requiresAuth) {
+        // Verifica si el usuario está autenticado
+        if (!authStore.accessToken) {
+            // Si no está autenticado, redirige al inicio de sesión
+            next({ name: 'Login' });
+        } else {
+            // Si está autenticado, permite el acceso a la ruta
+            next();
+        }
+    } else {
+        // Si la ruta no requiere autenticación, permite el acceso
+        next();
+    }
+});
+
+export default router;
